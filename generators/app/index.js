@@ -37,13 +37,41 @@ module.exports = class extends Generator {
   }
 
   async writing() {
-    const pkg = await fs.readJSON(this.templatePath('package.json'));
+    await fs.copy(this.templatePath(), this.destinationPath());
+    const pkg = {
+      name: this.props.name,
+      version: '0.0.0-development',
+      bin: 'dist/index.js',
+      license: 'MIT',
+      typings: 'dist/index.d.ts',
+      prettier: {
+        singleQuote: true,
+        trailingComma: 'all',
+        semi: false
+      },
+      scripts: {
+        format: 'prettier src/**/*.ts --write && prettier *.json --write && tslint --fix',
+        watch: 'tsc --pretty --watch',
+        lint: 'tslint "src/**/*.ts" --project tsconfig.json',
+        prepare: 'run-s -s lint build'
+      },
+      devDependencies: {
+        'npm-run-all': '^4.1.2',
+        prettier: '^1.8.2',
+        tslint: '^5.8.0',
+        'tslint-config-airbnb': '^5.3.1',
+        typescript: '^2.6.1'
+      },
+      files: ['dist']
+    };
     pkg.name = this.props.name;
     if (this.props.type === 'cli') {
       pkg.bin = 'dist/index.js';
+      pkg.scripts.build = 'tsc --pretty && chmod +x dist/index.js';
     }
     if (this.props.type === 'module') {
       pkg.main = 'dist/index.js';
+      pkg.scripts.build = 'tsc --pretty';
     }
     await fs.ensureFile(this.destinationPath('src/index.ts'));
     await fs.writeJSON(this.destinationPath('package.json'), pkg, { spaces: 2 });
