@@ -11,6 +11,6 @@ describe('generator-lemon-ts:app', () => {
   });
 
   it('creates files', () => {
-    assert.file(['dummyfile.txt']);
+    assert.file(['package.json']);
   });
 });
