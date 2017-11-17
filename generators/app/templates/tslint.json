@@ -1,7 +1,14 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint-config-airbnb"],
+  "rulesDirectory": [
+    "tslint-plugin-prettier",
+    "tslint-config-airbnb"
+  ],
   "rules": {
-    "semicolon": [true, "never"]
+    "prettier": true,
+    "semicolon": [
+      true,
+      "never"
+    ]
   }
 }
