@@ -7,6 +7,6 @@
   "scripts": {
     "build": "lemon-ts build",
     "prettify": "lemon-ts prettify",
-    "test": "lemon-ts test"
+    "test": "lemon-ts lint"
   }
 }
