@@ -53,16 +53,20 @@ module.exports = class extends Generator {
         format: 'prettier *.json --write && npm run -s lint --fix',
         watch: 'tsc --pretty --watch',
         lint: 'tslint --project tsconfig.json',
-        prepare: 'run-s -s lint build'
+        prepare: 'run-s -s format lint build'
       },
       devDependencies: {
         'npm-run-all': '^4.1.2',
+        'pre-commit': '^1.2.2',
         prettier: '^1.8.2',
+        'semantic-release': '^8.2.0',
         tslint: '^5.8.0',
         'tslint-config-airbnb': '^5.3.1',
+        'tslint-config-prettier': '^1.6.0',
         'tslint-plugin-prettier': '^1.3.0',
         typescript: '^2.6.1'
       },
+      precommit: 'prepare',
       files: ['dist']
     };
     pkg.name = this.props.name;
