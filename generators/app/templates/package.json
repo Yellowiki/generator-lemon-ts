@@ -1,0 +1,12 @@
+{
+  "name": "unknown",
+  "version": "0.0.0",
+  "devDependencies": {
+    "lemon-ts": "^1.0.3"
+  },
+  "scripts": {
+    "build": "lemon-ts build",
+    "prettify": "lemon-ts prettify",
+    "test": "lemon-ts test"
+  },
+}
