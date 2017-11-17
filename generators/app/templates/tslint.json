@@ -1,8 +1,9 @@
 {
   "defaultSeverity": "error",
-  "rulesDirectory": [
+  "extends": [
     "tslint-plugin-prettier",
-    "tslint-config-airbnb"
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
   ],
   "rules": {
     "prettier": true,
