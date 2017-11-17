@@ -1,6 +1,14 @@
 language: node_js
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
 node_js:
-  - 7
-  - 6
-  - 4
-after_script: 'cat ./coverage/lcov.info | coveralls'
+  - '9'
+  - '8'
+after_success:
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

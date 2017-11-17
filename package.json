@@ -1,6 +1,6 @@
 {
   "name": "generator-lemon-ts",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Generates a TypeScript project",
   "author": {
     "name": "GloriousYellow",
@@ -22,7 +22,8 @@
     "nsp": "^2.6.3",
     "prettier": "^1.7.0",
     "yeoman-assert": "^3.1.0",
-    "yeoman-test": "^1.7.0"
+    "yeoman-test": "^1.7.0",
+    "semantic-release": "^8.2.0"
   },
   "dependencies": {
     "add-prettier": "^1.2.0",
@@ -42,7 +43,8 @@
     "prepublish": "nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "lint-staged": {
     "*.js": ["eslint --fix", "git add"],
