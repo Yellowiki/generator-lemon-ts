@@ -67,7 +67,7 @@ module.exports = class extends Generator {
         typescript: '^2.6.1'
       },
       dependencies: {
-        '@types/node': '^8.0.53'
+        '@types/node': '>= 8.0.53'
       },
       precommit: 'prepare',
       files: ['dist']
