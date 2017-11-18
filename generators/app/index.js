@@ -66,6 +66,9 @@ module.exports = class extends Generator {
         'tslint-plugin-prettier': '^1.3.0',
         typescript: '^2.6.1'
       },
+      dependencies: {
+        '@types/node': '^8.0.53'
+      },
       precommit: 'prepare',
       files: ['dist']
     };
