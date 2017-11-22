@@ -68,7 +68,7 @@ module.exports = class extends Generator {
         format: 'prettier *.json --write && npm run -s lint --fix',
         watch: 'tsc --pretty --watch',
         lint: 'tslint --project tsconfig.json --format codeFrame',
-        prepare: 'run-s -s format lint build',
+        prepare: 'run-s -s format test build',
         build: 'tsc --pretty',
         'semantic-release':
           'semantic-release pre && npm publish && semantic-release post',
