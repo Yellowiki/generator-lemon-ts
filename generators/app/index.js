@@ -80,7 +80,9 @@ module.exports = class extends Generator {
         tslint: '^5.8.0',
         'tslint-config-lemon': '^1.1.1',
         'tslint-language-service': '^0.9.6',
-        typescript: '^2.6.1'
+        typescript: '^2.6.1',
+        'ts-jest': '^21.2.3',
+        jest: '^21.2.1'
       },
       precommit: 'prepare',
       files: ['dist'],
@@ -91,6 +93,14 @@ module.exports = class extends Generator {
       repository: {
         type: 'git',
         url: this.props.repository
+      },
+      jest: {
+        transform: {
+          '^.+\\.ts$': 'ts-jest'
+        },
+        testRegex: '/__tests__/.+\\.ts$',
+        moduleFileExtensions: ['ts'],
+        mapCoverage: true
       }
     };
     pkg.name = this.props.name;
@@ -103,6 +113,7 @@ module.exports = class extends Generator {
       pkg.scripts.build = 'tsc --pretty';
     }
     await fs.ensureFile(this.destinationPath('src/index.ts'));
+    await fs.ensureFile(this.destinationPath('__tests__/index.test.ts'));
     await fs.writeJSON(this.destinationPath('package.json'), pkg, { spaces: 2 });
   }
 
