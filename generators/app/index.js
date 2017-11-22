@@ -70,7 +70,9 @@ module.exports = class extends Generator {
         lint: 'tslint --project tsconfig.json --format codeFrame',
         prepare: 'run-s -s format lint build',
         build: 'tsc --pretty',
-        'semantic-release': 'semantic-release pre && npm publish && semantic-release post'
+        'semantic-release':
+          'semantic-release pre && npm publish && semantic-release post',
+        test: 'npm run -s lint && jest --coverage'
       },
       devDependencies: {
         'npm-run-all': '^4.1.2',
