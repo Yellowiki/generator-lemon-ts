@@ -1,4 +1,6 @@
 # generator-lemon-ts [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Yellowiki/generator-lemon-ts.svg)](https://greenkeeper.io/)
 > Generates a TypeScript project
 
 ## Installation
