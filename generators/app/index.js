@@ -27,6 +27,21 @@ module.exports = class extends Generator {
             value: 'module'
           }
         ]
+      },
+      {
+        type: 'input',
+        name: 'repository',
+        message: "Repository URL (type 'none' for none)",
+        validate: input => {
+          if (input) {
+            if (input.match(/^https:\/\/github\.com\/[a-zA-Z0-9_\-/]+\.git$/)) {
+              return true;
+            }
+            return "Either type 'none' or provide a valid GitHub HTTPS clone URL";
+          }
+          return true;
+        },
+        filter: input => (input === 'none' ? undefined : input)
       }
     ];
 
@@ -52,8 +67,10 @@ module.exports = class extends Generator {
       scripts: {
         format: 'prettier *.json --write && npm run -s lint --fix',
         watch: 'tsc --pretty --watch',
-        lint: 'tslint --project tsconfig.json',
-        prepare: 'run-s -s format lint build'
+        lint: 'tslint --project tsconfig.json --format codeFrame',
+        prepare: 'run-s -s format lint build',
+        build: 'tsc --pretty',
+        'semantic-release': 'semantic-release pre && npm publish && semantic-release post'
       },
       devDependencies: {
         'npm-run-all': '^4.1.2',
@@ -61,16 +78,20 @@ module.exports = class extends Generator {
         prettier: '^1.8.2',
         'semantic-release': '^8.2.0',
         tslint: '^5.8.0',
-        'tslint-config-airbnb': '^5.3.1',
-        'tslint-config-prettier': '^1.6.0',
-        'tslint-plugin-prettier': '^1.3.0',
+        'tslint-config-lemon': '^1.1.1',
+        'tslint-language-service': '^0.9.6',
         typescript: '^2.6.1'
       },
+      precommit: 'prepare',
+      files: ['dist'],
+      main: 'dist/index.js',
       dependencies: {
         '@types/node': '>= 8.0.53'
       },
-      precommit: 'prepare',
-      files: ['dist']
+      repository: {
+        type: 'git',
+        url: this.props.repository
+      }
     };
     pkg.name = this.props.name;
     if (this.props.type === 'cli') {
@@ -86,6 +107,15 @@ module.exports = class extends Generator {
   }
 
   install() {
+    if (this.props.repository) {
+      this.log(
+        yosay(
+          'Run ' +
+            chalk.red('semantic-release-cli setup') +
+            ' to initialize semantic release'
+        )
+      );
+    }
     this.yarnInstall();
   }
 };
