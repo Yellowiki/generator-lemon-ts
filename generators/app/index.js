@@ -78,6 +78,7 @@ module.exports = class extends Generator {
         '@types/node': '^8.0.0',
         jest: '^21.2.1',
         'jest-environment-node-debug': '^2.0.0',
+        'pre-commit': '^1.2.2',
         prettier: '^1.5.2',
         rimraf: '^2.0.0',
         'ts-jest': '^21.2.3',
@@ -97,7 +98,8 @@ module.exports = class extends Generator {
         moduleFileExtensions: ['ts', 'js'],
         testEnvironment: 'node',
         mapCoverage: true
-      }
+      },
+      precommit: 'prepare'
     };
     pkg.name = this.props.name;
     if (this.props.type === 'cli') {
