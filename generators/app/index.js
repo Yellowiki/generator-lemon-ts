@@ -54,54 +54,48 @@ module.exports = class extends Generator {
   async writing() {
     await fs.copy(this.templatePath(), this.destinationPath());
     const pkg = {
-      name: this.props.name,
+      name: 'fast-brainfuck',
       version: '0.0.0-development',
-      bin: 'dist/index.js',
+      description: 'fast-brainfuck',
       license: 'MIT',
-      typings: 'dist/index.d.ts',
-      prettier: {
-        singleQuote: true,
-        trailingComma: 'all',
-        semi: false
-      },
-      scripts: {
-        format: 'prettier *.json --write && npm run -s lint --fix',
-        watch: 'tsc --pretty --watch',
-        lint: 'tslint --project tsconfig.json --format codeFrame',
-        prepare: 'run-s -s format test build',
-        build: 'tsc --pretty',
-        'semantic-release':
-          'semantic-release pre && npm publish && semantic-release post',
-        test: 'npm run -s lint && jest --coverage'
-      },
-      devDependencies: {
-        'npm-run-all': '^4.1.2',
-        'pre-commit': '^1.2.2',
-        prettier: '^1.8.2',
-        'semantic-release': '^8.2.0',
-        tslint: '^5.8.0',
-        'tslint-config-lemon': '^1.1.1',
-        'tslint-language-service': '^0.9.6',
-        typescript: '^2.6.1',
-        'ts-jest': '^21.2.3',
-        jest: '^21.2.1'
-      },
-      precommit: 'prepare',
       files: ['dist'],
       main: 'dist/index.js',
-      dependencies: {
-        '@types/node': '>= 8.0.53'
+      typings: 'dist/index.d.ts',
+      scripts: {
+        clean: 'rimraf dist && rimraf coverage',
+        format: 'prettier *.json --write && yarn lint --format',
+        lint: 'tslint --project tsconfig.json --format codeFrame',
+        prepare: 'yarn build && yarn test',
+        pretest: 'yarn lint',
+        prebuild: 'yarn clean && yarn format',
+        build: 'tsc --pretty',
+        test: 'jest --coverage',
+        watch: 'yarn build --watch',
+        'watch:test': 'jest --watch'
       },
-      repository: {
-        type: 'git',
-        url: this.props.repository
+      devDependencies: {
+        '@types/jest': '^21.1.8',
+        '@types/node': '^8.0.0',
+        jest: '^21.2.1',
+        'jest-environment-node-debug': '^2.0.0',
+        prettier: '^1.5.2',
+        rimraf: '^2.0.0',
+        'ts-jest': '^21.2.3',
+        'ts-node': '^3.2.0',
+        tslint: '^5.0.0',
+        'tslint-config-lemon': '^1.1.3',
+        typescript: '^2.3.0'
+      },
+      engines: {
+        node: '>=8.0.0'
       },
       jest: {
         transform: {
-          '^.+\\.ts$': 'ts-jest'
+          '.(ts)': 'ts-jest'
         },
-        testRegex: '/__tests__/.+\\.ts$',
+        testRegex: '/__tests__/.*\\.test\\.ts$',
         moduleFileExtensions: ['ts', 'js'],
+        testEnvironment: 'node',
         mapCoverage: true
       }
     };

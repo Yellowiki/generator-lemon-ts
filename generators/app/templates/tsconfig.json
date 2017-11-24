@@ -9,7 +9,8 @@
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "inlineSourceMap": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
