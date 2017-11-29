@@ -75,7 +75,6 @@ module.exports = class extends Generator {
       },
       devDependencies: {
         '@types/jest': '^21.1.8',
-        '@types/node': '^8.0.0',
         jest: '^21.2.1',
         'jest-environment-node-debug': '^2.0.0',
         'pre-commit': '^1.2.2',
@@ -86,6 +85,9 @@ module.exports = class extends Generator {
         tslint: '^5.0.0',
         'tslint-config-lemon': '^1.1.3',
         typescript: '^2.3.0'
+      },
+      dependencies: {
+        '@types/node': '^8.0.0'
       },
       engines: {
         node: '>=8.0.0'
