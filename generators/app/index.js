@@ -87,7 +87,7 @@ module.exports = class extends Generator {
         typescript: '^2.3.0'
       },
       dependencies: {
-        '@types/node': '^8.0.0'
+        '@types/node': '>=8.0.0'
       },
       engines: {
         node: '>=8.0.0'
