@@ -111,7 +111,7 @@ module.exports = class extends Generator {
       pkg.scripts.build = 'tsc --pretty';
     }
     await fs.ensureFile(this.destinationPath('src/index.ts'));
-    await fs.ensureFile(this.destinationPath('__tests__/index.test.ts'));
+    await fs.ensureFile(this.destinationPath('src/__tests__/index.test.ts'));
     await fs.writeJSON(this.destinationPath('package.json'), pkg, { spaces: 2 });
   }
 
