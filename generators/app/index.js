@@ -61,6 +61,10 @@ module.exports = class extends Generator {
       files: ['dist'],
       main: 'dist/index.js',
       typings: 'dist/index.d.ts',
+      repository: {
+        type: 'git',
+        url: this.props.repository
+      },
       scripts: {
         clean: 'rimraf dist && rimraf coverage',
         format: 'prettier *.json --write && yarn lint --format',
