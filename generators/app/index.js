@@ -101,7 +101,7 @@ module.exports = class extends Generator {
           '.(ts)': 'ts-jest'
         },
         testRegex: '/__tests__/.*\\.test\\.ts$',
-        moduleFileExtensions: ['ts', 'js'],
+        moduleFileExtensions: ['ts', 'js', 'json'],
         testEnvironment: 'node',
         mapCoverage: true
       },
