@@ -19,7 +19,7 @@ module.exports = class extends Generator {
         message: 'What kind?',
         choices: [
           {
-            name: 'CLI app',
+            name: 'CLI/server app',
             value: 'cli'
           },
           {
@@ -111,6 +111,7 @@ module.exports = class extends Generator {
     if (this.props.type === 'cli') {
       pkg.bin = 'dist/index.js';
       pkg.scripts.build = 'tsc --pretty && chmod +x dist/index.js';
+      pkg.scripts.start = 'ts-node src/index.ts';
     }
     if (this.props.type === 'module') {
       pkg.main = 'dist/index.js';
