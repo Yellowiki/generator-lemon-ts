@@ -54,9 +54,9 @@ module.exports = class extends Generator {
   async writing() {
     await fs.copy(this.templatePath(), this.destinationPath());
     const pkg = {
-      name: 'fast-brainfuck',
+      name: this.props.name,
       version: '0.0.0-development',
-      description: 'fast-brainfuck',
+      description: this.props.name,
       license: 'MIT',
       files: ['dist'],
       main: 'dist/index.js',
@@ -112,7 +112,6 @@ module.exports = class extends Generator {
       },
       precommit: 'prepare'
     };
-    pkg.name = this.props.name;
     if (this.props.type === 'cli') {
       pkg.bin = 'dist/index.js';
       pkg.scripts.build = 'tsc --pretty && chmod +x dist/index.js';
