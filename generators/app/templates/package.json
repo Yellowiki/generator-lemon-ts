@@ -8,15 +8,16 @@
   "scripts": {
     "clean": "rimraf dist && rimraf coverage",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "format": "prettier *.json --write && yarn lint --format",
+    "format": "run-p prettier \"lint --format\"",
     "lint": "tslint --project tsconfig.json --format codeFrame",
-    "prepare": "yarn build && yarn test",
-    "pretest": "yarn lint",
-    "prebuild": "yarn clean && yarn format",
-    "precommit": "yarn prepare",
+    "jest": "jest",
+    "prepare": "run-p build test",
+    "prebuild": "run-s format",
+    "precommit": "run-s prepare",
+    "prettier": "prettier *.json --write",
     "build": "tsc --pretty",
-    "test": "jest --coverage",
-    "watch": "yarn build --watch",
+    "test": "run-p jest lint",
+    "watch": "tsc --pretty --watch",
     "watch:test": "jest --watch"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "husky": "^0.14.3",
     "jest": "^21.2.1",
     "jest-environment-node-debug": "^2.0.0",
+    "npm-run-all": "^4.1.2",
     "prettier": "^1.5.2",
     "rimraf": "^2.0.0",
     "semantic-release": "^8.2.0",
@@ -35,10 +37,16 @@
     "tslint-config-lemon": "^1.1.7",
     "typescript": "^2.3.0"
   },
-  "dependencies": { "@types/node": ">=8.0.0" },
-  "engines": { "node": ">=8.0.0" },
+  "dependencies": {
+    "@types/node": ">=8.0.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "jest": {
-    "transform": { ".(ts)": "ts-jest" },
+    "transform": {
+      ".(ts)": "ts-jest"
+    },
     "testRegex": "/__tests__/.*.test.ts$",
     "moduleFileExtensions": ["ts", "js", "json"],
     "testEnvironment": "node",
