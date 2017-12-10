@@ -6,13 +6,9 @@
     "name": "GloriousYellow",
     "email": "yellowglorious@gmail.com"
   },
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/index.js",
-  "keywords": [
-    "yeoman-generator"
-  ],
+  "keywords": ["yeoman-generator"],
   "devDependencies": {
     "coveralls": "^3.0.0",
     "eslint": "^4.1.0",
@@ -53,20 +49,11 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
   },
   "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
+    "extends": ["xo", "prettier"],
     "env": {
       "jest": true,
       "node": true
@@ -80,9 +67,7 @@
         }
       ]
     },
-    "plugins": [
-      "prettier"
-    ]
+    "plugins": ["prettier"]
   },
   "prettier": {
     "singleQuote": true,
