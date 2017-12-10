@@ -34,7 +34,7 @@
     "ts-jest": "^21.2.3",
     "ts-node": "^3.2.0",
     "tslint": "^5.0.0",
-    "tslint-config-lemon": "^1.1.7",
+    "tslint-config-lemon": "^1.2.0",
     "typescript": "^2.3.0"
   },
   "dependencies": {
