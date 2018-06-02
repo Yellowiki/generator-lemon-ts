@@ -32,7 +32,7 @@
     "deep-assign": "^2.0.0",
     "fs-extra": "^5.0.0",
     "install-peerdeps": "^1.2.0",
-    "semantic-release-cli": "^3.2.4",
+    "semantic-release-cli": "^4.0.2",
     "serve": "^6.3.1",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
