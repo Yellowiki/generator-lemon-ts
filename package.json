@@ -34,7 +34,7 @@
     "install-peerdeps": "^1.2.0",
     "semantic-release-cli": "^3.2.4",
     "serve": "^6.3.1",
-    "yeoman-generator": "^2.0.1",
+    "yeoman-generator": "^3.1.0",
     "yosay": "^2.0.1"
   },
   "jest": {
